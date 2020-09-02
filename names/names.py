@@ -2,11 +2,11 @@ import time
 
 start_time = time.time()
 
-f = open('names_1.txt', 'r')
+f = open('names/names_1.txt', 'r')
 names_1 = f.read().split("\n")  # List containing 10000 names
 f.close()                                                                                           
 
-f = open('names_2.txt', 'r')
+f = open('names/names_2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
@@ -21,11 +21,10 @@ f.close()
 #list comprehension with an if statement
 
 masterList = names_1 + names_2
-duplicates = []
-[duplicates.append(name) for name in masterList if name not in duplicates]
+duplicates = set(masterList)
 
+print(len(duplicates), 'duplicates have been found')
 end_time = time.time()
-print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
 print (f"runtime: {end_time - start_time} seconds")
 
 # ---------- Stretch Goal -----------
